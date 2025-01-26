@@ -10,3 +10,7 @@ dev:
 
 build:
     qmk userspace-compile
+
+json:
+    qmk info -kb zsa/voyager -f json > info/voyager_info.json
+    qmk c2json -kb zsa/voyager -km mine --no-cpp > info/voyager.json

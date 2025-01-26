@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-#include "keycodes.h"
 #include QMK_KEYBOARD_H
 
 #include "version.h"

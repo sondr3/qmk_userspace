@@ -1,16 +1,21 @@
+set dotenv-load
+
 default: dev
 
 clang:
-    qmk generate-compilation-database -kb zsa/voyager -km mine
-    qmk compile --compiledb -kb zsa/voyager -km mine
+    @echo "Configuring clang for $KEYBOARD"
+    qmk generate-compilation-database -kb $KEYBOARD -km mine
+    qmk compile --compiledb -kb $KEYBOARD -km mine
 
 dev:
-    qmk lint -kb zsa/voyager -km mine --strict
-    qmk compile -kb zsa/voyager -km mine
+    @echo "Building $KEYBOARD"
+    qmk lint -kb $KEYBOARD -km mine --strict
+    qmk compile -kb $KEYBOARD -km mine
 
 build:
     qmk userspace-compile
 
 json:
-    qmk info -kb zsa/voyager -f json > info/voyager_info.json
-    qmk c2json -kb zsa/voyager -km mine --no-cpp > info/voyager.json
+    @echo "Building JSON info for $KEYBOARD"
+    qmk info -kb $KEYBOARD -f json > info/$KEYBOARD_NAME.info.json
+    qmk c2json -kb $KEYBOARD -km mine --no-cpp > info/$KEYBOARD_NAME.json

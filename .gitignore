@@ -16,3 +16,8 @@ compile_commands.json
 .cache/
 
 info/*.json
+
+
+### Created by https://www.gitignore.io
+### dotenv ###
+.env

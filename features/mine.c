@@ -1,3 +1,7 @@
+#ifdef ACHORDION_ENABLE
+#include "features/achordion.h"
+#endif  // ACHORDION_ENABLE
+
 // Layers used in my keyboards
 enum layers {
 	BASE,
@@ -30,3 +34,12 @@ enum layers {
 #define M_AE LALT(KC_QUOTE)
 #define M_OE LALT(KC_O)
 #define M_AA LALT(KC_A)
+
+bool process_record_user(uint16_t keycode, keyrecord_t* record) {
+  if (!process_achordion(keycode, record)) { return false; }
+  return true;
+}
+
+void housekeeping_task_user(void) {
+  achordion_task();
+}

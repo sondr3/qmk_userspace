@@ -12,6 +12,11 @@ dev:
     qmk lint -kb $KEYBOARD -km mine --strict
     qmk compile -kb $KEYBOARD -km mine
 
+flash:
+    @echo "Flashing $KEYBOARD"
+    qmk flash -kb $KEYBOARD -km mine
+
+
 build:
     qmk userspace-compile
 

@@ -16,19 +16,19 @@ enum layers {
 
 // Layer macros
 #define M_SPC LT(SYM, KC_SPACE)
-#define M_BSPC LT(NUM, KC_SPACE)
+#define M_BSPC LT(NUM, KC_BSPACE)
 
 // Left hand side macros
-#define M_A MT(KC_LCTL, KC_A)
-#define M_R MT(KC_LOPT, KC_R)
-#define M_S MT(KC_LCMD, KC_S)
-#define M_T MT(KC_LSFT, KC_T)
+#define M_A MT(MOD_LCTL, KC_A)
+#define M_R MT(MOD_LALT, KC_R)
+#define M_S MT(MOD_LGUI, KC_S)
+#define M_T MT(MOD_LSFT, KC_T)
 
 // Right hand side macros
-#define M_N MT(KC_RSFT, KC_N)
-#define M_E MT(KC_RCMD, KC_E)
-#define M_I MT(KC_ROPT, KC_I)
-#define M_O MT(KC_RCTL, KC_O)
+#define M_N MT(MOD_RSFT, KC_N)
+#define M_E MT(MOD_RGUI, KC_E)
+#define M_I MT(MOD_RALT, KC_I)
+#define M_O MT(MOD_RCTL, KC_O)
 
 // Norwegian macros
 #define M_AE LALT(KC_QUOTE)

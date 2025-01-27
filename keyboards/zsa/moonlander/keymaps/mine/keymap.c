@@ -13,7 +13,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_BSPC , M_A     , M_R     , M_S     , M_T     , KC_G    , _______ ,               _______ , KC_M    , M_N     , M_E     , M_I     , M_O     , KC_QUOT ,
     _______ , KC_Z    , KC_X    , KC_C    , KC_D    , KC_V    ,                                   KC_K    , KC_H    , KC_COMM , KC_DOT  , KC_SLSH , MO(3)   ,
     _______ , _______ , _______ , _______ , _______ ,           KC_HYPR ,               KC_ESC  , _______ , _______ , _______ , _______ , _______ ,
-
                                             M_SPC   , KC_TAB  , _______ ,               _______ , KC_ENT  , M_BSPC
   ),
   [SYM] = LAYOUT_moonlander(

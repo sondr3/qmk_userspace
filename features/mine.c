@@ -36,10 +36,14 @@ enum layers {
 #define M_AA LALT(KC_A)
 
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
+	#ifdef ACHORDION_ENABLE
   if (!process_achordion(keycode, record)) { return false; }
+	#endif  // ACHORDION_ENABLE
   return true;
 }
 
 void housekeeping_task_user(void) {
+	#ifdef ACHORDION_ENABLE
   achordion_task();
+	#endif  // ACHORDION_ENABLE
 }

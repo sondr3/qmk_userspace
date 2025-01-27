@@ -16,7 +16,7 @@ enum layers {
 
 // Layer macros
 #define M_SPC LT(SYM, KC_SPACE)
-#define M_BSPC LT(NUM, KC_BSPACE)
+#define M_BSPC LT(NUM, KC_BSPC)
 
 // Left hand side macros
 #define M_A MT(MOD_LCTL, KC_A)

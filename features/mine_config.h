@@ -14,5 +14,7 @@
 #define QUICK_TAP_TERM_PER_KEY
 #define QUICK_TAP_TERM 0
 
+#define MAX_DEFERRED_EXECUTORS 10
+
 // https://getreuer.info/posts/keyboards/achordion/index.html#typing-streaks
 #define ACHORDION_STREAK

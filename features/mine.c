@@ -15,8 +15,8 @@ enum layers {
 #define M_CT LCTL(KC_TAB) // Ctrl + Tab
 
 // Layer macros
-#define M_SPC LT(SYM, KC_SPACE)
-#define M_BSPC LT(NUM, KC_BSPC)
+#define M_SPC LT(NUM, KC_SPACE)
+#define M_BSPC LT(SYM, KC_BSPC)
 
 // Left hand side macros
 #define M_A MT(MOD_LCTL, KC_A)
@@ -34,6 +34,19 @@ enum layers {
 #define M_AE LALT(KC_QUOTE)
 #define M_OE LALT(KC_O)
 #define M_AA LALT(KC_A)
+
+bool achordion_eager_mod(uint8_t mod) {
+	switch (mod) {
+		// eagerly apply shift and cmd
+		case MOD_LSFT:
+		case MOD_LGUI:
+		case MOD_RSFT:
+		case MOD_RGUI:
+			return true;
+		default:
+			return false;
+	}
+}
 
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
 	#ifdef ACHORDION_ENABLE

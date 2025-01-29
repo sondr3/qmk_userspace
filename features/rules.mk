@@ -15,7 +15,7 @@ ifeq ($(strip $(SM_TAP_DANCE_ENABLE)), yes)
 	OPT_DEFS += -DSM_TAP_DANCE_ENABLE
 endif
 
-ACHORDION_ENABLE ?= no
+ACHORDION_ENABLE ?= yes
 ifeq ($(strip $(ACHORDION_ENABLE)), yes)
 	OPT_DEFS += -DACHORDION_ENABLE
 	SRC += features/achordion.c

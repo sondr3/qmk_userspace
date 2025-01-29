@@ -96,6 +96,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
   return true;
 }
 
+#ifdef ACHORDION_ENABLE
+uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
+  switch (tap_hold_keycode) {
+    case M_SPC:
+    case M_BSPC:
+      return 0;  // Bypass Achordion for these keys.
+  }
+
+  return 800;  // Otherwise use a timeout of 800 ms.
+}
+#endif  // ACHORDION_ENABLE
+
 void housekeeping_task_user(void) {
 	#ifdef ACHORDION_ENABLE
   achordion_task();

@@ -4,7 +4,6 @@ default: dev
 
 clang:
     @echo "Configuring clang for $KEYBOARD"
-    qmk generate-compilation-database -kb $KEYBOARD -km mine
     qmk compile --compiledb -kb $KEYBOARD -km mine
 
 dev:

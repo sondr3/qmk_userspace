@@ -15,9 +15,11 @@ flash:
     @echo "Flashing $KEYBOARD"
     qmk flash -kb $KEYBOARD -km mine
 
-
 build:
     qmk userspace-compile
+
+info:
+    qmk info -kb $KEYBOARD 
 
 json:
     @echo "Building JSON info for $KEYBOARD"

@@ -1,7 +1,4 @@
 #include "quantum_keycodes.h"
-#ifdef ACHORDION_ENABLE
-#include "features/achordion.h"
-#endif  // ACHORDION_ENABLE
 
 // Layers used in my keyboards
 enum layers {
@@ -49,24 +46,8 @@ enum custom_keycodes {
 #define M_AA LALT(KC_A)
 
 #ifdef SM_TAP_DANCE_ENABLE
-#include "features/sm_td.h"
-#endif  // SM_TAP_DANCE_ENABLE
-
-
-#ifdef ACHORDION_ENABLE
-bool achordion_eager_mod(uint8_t mod) {
-	switch (mod) {
-		// eagerly apply shift and cmd
-		case MOD_LSFT:
-		case MOD_LGUI:
-		case MOD_RSFT:
-		case MOD_RGUI:
-			return true;
-		default:
-			return false;
-	}
-}
-#endif  // ACHORDION_ENABLE
+#    include "features/sm_td.h"
+#endif // SM_TAP_DANCE_ENABLE
 
 #ifdef SM_TAP_DANCE_ENABLE
 smtd_resolution on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
@@ -83,17 +64,15 @@ smtd_resolution on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap
 
   return SMTD_RESOLUTION_UNHANDLED;
 }
-#endif  // SM_TAP_DANCE_ENABLE
+#endif // SM_TAP_DANCE_ENABLE
 
-bool process_record_user(uint16_t keycode, keyrecord_t* record) {
-	#ifdef ACHORDION_ENABLE
-  if (!process_achordion(keycode, record)) { return false; }
-	#endif  // ACHORDION_ENABLE
-
-	#ifdef SM_TAP_DANCE_ENABLE
-	if (!process_smtd(keycode, record)) { return false; }
-	#endif  // SM_TAP_DANCE_ENABLE
-  return true;
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+#ifdef SM_TAP_DANCE_ENABLE
+    if (!process_smtd(keycode, record)) {
+        return false;
+    }
+#endif // SM_TAP_DANCE_ENABLE
+    return true;
 }
 
 #ifdef ACHORDION_ENABLE
@@ -108,8 +87,4 @@ uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
 }
 #endif  // ACHORDION_ENABLE
 
-void housekeeping_task_user(void) {
-	#ifdef ACHORDION_ENABLE
-  achordion_task();
-	#endif  // ACHORDION_ENABLE
-}
+void housekeeping_task_user(void) {}

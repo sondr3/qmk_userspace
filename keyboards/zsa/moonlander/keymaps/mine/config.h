@@ -8,4 +8,3 @@
 #include "features/mine_config.h"
 
 // #define USB_SUSPEND_WAKEUP_DELAY 0
-

@@ -1,28 +1,23 @@
 #include "quantum_keycodes.h"
 
 // Layers used in my keyboards
-enum layers {
-	BASE,
-	SYM,
-	NUM,
-	SYS
-};
+enum layers { BASE, SYM, NUM, SYS };
 
 enum custom_keycodes {
-	// Left hand side
-	MKC_A = SAFE_RANGE,
-	MKC_R,
-	MKC_S,
-	MKC_T,
-	// Right hand side
-	MKC_N,
-	MKC_E,
-	MKC_I,
-	MKC_O,
+    // Left hand side
+    MKC_A = SAFE_RANGE,
+    MKC_R,
+    MKC_S,
+    MKC_T,
+    // Right hand side
+    MKC_N,
+    MKC_E,
+    MKC_I,
+    MKC_O,
 };
 // Too few fingers macros
 #define M_CST LCTL(LSFT(KC_TAB)) // Ctrl + Shift + Tab
-#define M_CT LCTL(KC_TAB) // Ctrl + Tab
+#define M_CT LCTL(KC_TAB)        // Ctrl + Tab
 
 // Layer macros
 #define M_SPC LT(SYM, KC_SPACE)
@@ -51,18 +46,18 @@ enum custom_keycodes {
 
 #ifdef SM_TAP_DANCE_ENABLE
 smtd_resolution on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
-	switch (keycode) {
-		SMTD_MT_ON_MKEY(MKC_A, KC_A, KC_LCTL)
-		SMTD_MT_ON_MKEY(MKC_R, KC_R, KC_LALT)
-		SMTD_MT_ON_MKEY(MKC_S, KC_S, KC_LGUI)
-		SMTD_MT_ON_MKEY(MKC_T, KC_T, KC_LSFT)
-		SMTD_MT_ON_MKEY(MKC_N, KC_N, KC_RSFT)
-		SMTD_MT_ON_MKEY(MKC_E, KC_E, KC_RGUI)
-		SMTD_MT_ON_MKEY(MKC_I, KC_I, KC_RALT)
-		SMTD_MT_ON_MKEY(MKC_O, KC_O, KC_RCTL)
-	}
+    switch (keycode) {
+        SMTD_MT_ON_MKEY(MKC_A, KC_A, KC_LCTL)
+        SMTD_MT_ON_MKEY(MKC_R, KC_R, KC_LALT)
+        SMTD_MT_ON_MKEY(MKC_S, KC_S, KC_LGUI)
+        SMTD_MT_ON_MKEY(MKC_T, KC_T, KC_LSFT)
+        SMTD_MT_ON_MKEY(MKC_N, KC_N, KC_RSFT)
+        SMTD_MT_ON_MKEY(MKC_E, KC_E, KC_RGUI)
+        SMTD_MT_ON_MKEY(MKC_I, KC_I, KC_RALT)
+        SMTD_MT_ON_MKEY(MKC_O, KC_O, KC_RCTL)
+    }
 
-  return SMTD_RESOLUTION_UNHANDLED;
+    return SMTD_RESOLUTION_UNHANDLED;
 }
 #endif // SM_TAP_DANCE_ENABLE
 
@@ -75,16 +70,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     return true;
 }
 
-#ifdef ACHORDION_ENABLE
-uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
-  switch (tap_hold_keycode) {
-    case M_SPC:
-    case M_BSPC:
-      return 0;  // Bypass Achordion for these keys.
-  }
+bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record, uint16_t other_keycode, keyrecord_t *other_record) {
+    switch (tap_hold_keycode) {
+        case M_SPC:
+        case M_BSPC:
+            // immeditaely tap
+            return false;
+    }
 
-  return 800;  // Otherwise use a timeout of 800 ms.
+    return get_chordal_hold_default(tap_hold_record, other_record);
 }
-#endif  // ACHORDION_ENABLE
 
 void housekeeping_task_user(void) {}

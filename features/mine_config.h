@@ -4,7 +4,7 @@
 #define LAYER_STATE_8BIT
 
 // https://docs.qmk.fm/tap_hold#tapping-term
-#define TAPPING_TERM 220
+#define TAPPING_TERM 180
 #define TAPPING_TERM_PER_KEY
 
 // https://docs.qmk.fm/tap_hold#permissive-hold

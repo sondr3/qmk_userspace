@@ -19,9 +19,12 @@ build:
     qmk userspace-compile
 
 info:
-    qmk info -kb $KEYBOARD 
+    qmk info -kb $KEYBOARD
 
 json:
     @echo "Building JSON info for $KEYBOARD"
     qmk info -kb $KEYBOARD -f json > info/$KEYBOARD_NAME.info.json
     qmk c2json -kb $KEYBOARD -km mine --no-cpp > info/$KEYBOARD_NAME.json
+
+fmt:
+    fd -e h -e c | rust-parallel clang-format -i
